@@ -1,12 +1,27 @@
+import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
-import kotlin.io.path.Path
-import kotlin.io.path.readLines
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = Path("src/$name.txt").readLines()
+fun readInputString(name: String) = File("src", "$name.txt")
+    .readLines()
+
+fun readInputLong(name: String) = File("src", "$name.txt")
+    .readLines()
+    .map { it.toLong() }
+
+// For inputs with empty lines breaking up groups, this will return a list of groups
+fun readInputSpaceDelimited(name: String): List<List<String>> {
+    val groups = File("src", "$name.txt").readText().replace("\r", "").split("\n\n")
+    return groups.map { it.split("\n") }
+}
+
+fun readAndCompoundSpaceDelimited(name: String, compounder: (List<String>) -> Long): List<Long> {
+    val groups = readInputSpaceDelimited(name)
+    return groups.map { compounder(it) }
+}
 
 /**
  * Converts string to md5 hash.
@@ -14,8 +29,3 @@ fun readInput(name: String) = Path("src/$name.txt").readLines()
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
     .padStart(32, '0')
-
-/**
- * The cleaner shorthand for printing output.
- */
-fun Any?.println() = println(this)
