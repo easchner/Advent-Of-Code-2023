@@ -24,12 +24,10 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        var total = 0
         val ticketCopies = MutableList(input.size) { 1 }
 
         for (lineNum in input.indices) {
             val line = input[lineNum]
-            total += ticketCopies[lineNum]
 
             var winnings = 0
             val split = line.split(": ")[1].split(" | ")
@@ -47,7 +45,7 @@ fun main() {
             }
         }
 
-        return total
+        return ticketCopies.sum()
     }
 
     val testInput = readInputString("day04/test")
