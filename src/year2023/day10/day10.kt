@@ -1,6 +1,6 @@
 package year2023.day10
 
-import readInputString
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 data class Point(val x: Int, val y: Int)

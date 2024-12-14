@@ -1,6 +1,6 @@
 package year2023.day04
 
-import readInputString
+import utils.readInputString
 
 fun main() {
     fun part1(input: List<String>): Int {

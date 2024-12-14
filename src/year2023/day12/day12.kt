@@ -1,6 +1,6 @@
 package year2023.day12
 
-import readInputString
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 val seenTable = hashMapOf<String, Long>()

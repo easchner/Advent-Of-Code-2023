@@ -1,7 +1,7 @@
 package year2023.day08
 
-import lcm
-import readInputString
+import utils.lcm
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 data class Node (val name: String, val left: String, val right: String)

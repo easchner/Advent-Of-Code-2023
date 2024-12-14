@@ -1,7 +1,7 @@
 package year2015.day04
 
-import md5
-import readInputString
+import utils.md5
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 fun main() {

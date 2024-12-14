@@ -1,6 +1,6 @@
 package year2024.day13
 
-import readInputSpaceDelimited
+import utils.readInputSpaceDelimited
 import kotlin.system.measureTimeMillis
 
 fun main() {

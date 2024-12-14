@@ -1,6 +1,6 @@
 package year2024.day05
 
-import readInputString
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 enum class Direction { UP, DOWN, LEFT, RIGHT }

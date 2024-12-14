@@ -1,7 +1,7 @@
 package year2023.day20
 
-import lcm
-import readInputString
+import utils.lcm
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 data class Module(val label: String, val type: Char, var state: String, var children: List<String>, val parents: MutableList<Pair<String, String>>)

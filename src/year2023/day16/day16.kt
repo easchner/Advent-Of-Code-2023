@@ -1,6 +1,6 @@
 package year2023.day16
 
-import readInputString
+import utils.readInputString
 import java.lang.Long.max
 import kotlin.system.measureTimeMillis
 

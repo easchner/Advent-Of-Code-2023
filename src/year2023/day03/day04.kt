@@ -1,6 +1,6 @@
 package year2023.day03
 
-import readInputString
+import utils.readInputString
 
 fun main() {
     fun getWholeNumber(line: List<Char>, index: Int): Pair<Int, Int> {

@@ -1,6 +1,6 @@
 package year2023.day07
 
-import readInputString
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 val ordinals = mapOf<Char, Int>('A' to 13, 'K' to 12, 'Q' to 11, 'J' to 10, 'T' to 9, '9' to 8, '8' to 7,

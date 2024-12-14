@@ -1,6 +1,6 @@
 package year2023.day17
 
-import readInputString
+import utils.readInputString
 import java.util.PriorityQueue
 import kotlin.system.measureTimeMillis
 

@@ -1,3 +1,5 @@
+package utils
+
 import java.lang.Long.max
 
 fun lcm(a: Long, b: Long): Long {

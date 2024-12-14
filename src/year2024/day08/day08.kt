@@ -1,6 +1,6 @@
 package year2024.day08
 
-import readInputString
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 data class Coord (val x: Int, val y: Int)

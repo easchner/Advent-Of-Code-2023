@@ -1,6 +1,6 @@
 package year2023.day02
 
-import readInputString
+import utils.readInputString
 import java.lang.Integer.max
 
 fun main() {

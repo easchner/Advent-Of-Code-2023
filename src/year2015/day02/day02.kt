@@ -1,6 +1,6 @@
 package year2015.day02
 
-import readInputString
+import utils.readInputString
 import kotlin.system.measureTimeMillis
 
 fun main() {
