@@ -1,4 +1,4 @@
-package year2015.day08
+package year2015.day09
 
 import utils.readInputString
 import kotlin.math.max
