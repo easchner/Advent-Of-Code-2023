@@ -4,23 +4,6 @@ import utils.readInputSpaceDelimited
 import kotlin.system.measureTimeMillis
 
 fun main() {
-    val memoPatterns = mutableMapOf<String, Boolean>()
-
-    fun isComboPossible(target: String, towels: List<String>): Boolean {
-        if (target.isEmpty()) return true
-        if (memoPatterns.containsKey(target)) return memoPatterns[target]!!
-        for (towel in towels) {
-            if (target.startsWith(towel)) {
-                if (isComboPossible(target.substring(towel.length), towels)) {
-                    memoPatterns[target] = true
-                    return true
-                }
-            }
-        }
-        memoPatterns[target] = false
-        return false
-    }
-
     val memoArrangements = mutableMapOf<String, Long>()
 
     fun countArrangements(target: String, towels: List<String>): Long {
@@ -40,13 +23,15 @@ fun main() {
     fun part1(input: List<List<String>>): Int {
         val towels = input[0][0].split(", ")
         val targets = input[1]
+        memoArrangements.clear()
 
-        return targets.count { isComboPossible(it, towels) }
+        return targets.count { countArrangements(it, towels) > 0 }
     }
 
     fun part2(input: List<List<String>>): Long {
         val towels = input[0][0].split(", ")
         val targets = input[1]
+        memoArrangements.clear()
 
         return targets.sumOf { countArrangements(it, towels) }
     }
@@ -56,14 +41,12 @@ fun main() {
 
     check(part1(testInput) == 6)
     val timer1 = measureTimeMillis {
-        memoPatterns.clear()
         println(part1(input))
     }
     println("Part 1 took $timer1 ms\n")
 
     check(part2(testInput) == 16L)
     val timer2 = measureTimeMillis {
-        memoArrangements.clear()
         println(part2(input))
     }
     println("Part 2 took $timer2 ms")
