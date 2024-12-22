@@ -56,6 +56,9 @@ fun main() {
 
         var best = 0L
         for (key in sorted) {
+            if (key.second < best) {
+                break
+            }
             val k = key.first
             var current = 0L
             for (m in monkeys) {
