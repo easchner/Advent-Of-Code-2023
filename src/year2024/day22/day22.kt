@@ -70,7 +70,7 @@ fun main() {
                 }
             }
             best = maxOf(best, current)
-            println("Checking $k. Best so far: $best. Current: $current")
+//            println("Checking $k. Best so far: $best. Current: $current")
         }
 
 //        var best = 0L
