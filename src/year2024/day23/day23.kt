@@ -40,10 +40,14 @@ fun main() {
         return lans.size
     }
 
+    var best = setOf<String>()
+
     fun checkNode(nodes: Map<String, List<String>>, node: String): Set<String> {
         val checkNodes = nodes[node]!!
-        var best = setOf<String>()
-        for (i in 1 until (1 shl checkNodes.size)) {
+        for (i in (1 shl checkNodes.size - 1) downTo 1) {
+            if (Integer.bitCount(i) < best.size) {
+                continue
+            }
             val inNodes = mutableSetOf(node)
             for (j in checkNodes.indices) {
                 if ((i and (1 shl j)) != 0) {
@@ -86,12 +90,12 @@ fun main() {
             }
         }
 
-        var best = setOf<String>()
+//        var best = setOf<String>()
         for (node in nodes) {
             val score = checkNode(nodes, node.key)
-            if (score.size > best.size) {
-                best = score
-            }
+//            if (score.size > best.size) {
+//                best = score
+//            }
         }
 
         return best.sorted().joinToString(",")
