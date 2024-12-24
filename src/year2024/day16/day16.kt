@@ -10,17 +10,13 @@ enum class Direction { UP, DOWN, LEFT, RIGHT }
 fun main() {
     fun dfs(grid: List<CharArray>, x: Int, y: Int, d: Direction): Long {
         val toVisit = mutableSetOf(Node(x, y, d, 0L))
-        var minFound = Long.MAX_VALUE
-        val visited = mutableSetOf<Triple<Int, Int, Direction>>()
 
         while (toVisit.isNotEmpty()) {
             val node = toVisit.minBy { it.s }
             toVisit.remove(node)
-            visited.add(Triple(node.x, node.y, node.d))
 
-            if (grid[node.y][node.x] == 'E') {
-                minFound = min(minFound, node.s)
-            }
+            if (grid[node.y][node.x] == 'E')
+                return node.s
 
             if (grid[node.y][node.x] == '.' || grid[node.y][node.x] == 'S') {
                 when (node.d) {
@@ -46,12 +42,9 @@ fun main() {
                     }
                 }
             }
-
-            toVisit.removeAll { it.s >= minFound }
-            toVisit.removeAll { visited.contains(Triple(it.x, it.y, it.d)) }
         }
 
-        return minFound
+        return -1
     }
 
     fun dfs2(grid: List<CharArray>, x: Int, y: Int, d: Direction, max: Long): Long {
