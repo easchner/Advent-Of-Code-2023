@@ -45,33 +45,40 @@ fun main() {
         }
 
         val map = mutableMapOf<key, Long>()
+        val monkeyMap = mutableMapOf<key, Boolean>()
         for (monkey in monkeys) {
+            monkeyMap.clear()
             for (i in 0 until monkey.size - 3) {
                 val k = key(monkey[i].first, monkey[i + 1].first, monkey[i + 2].first, monkey[i + 3].first)
-                map[k] = map.getOrDefault(k, 0) + monkey[i + 3].second
-            }
-        }
-
-        val sorted = map.toList().sortedByDescending { it.second }
-
-        var best = 0L
-        for (key in sorted) {
-            if (key.second < best) {
-                break
-            }
-            val k = key.first
-            var current = 0L
-            for (m in monkeys) {
-                for (i in 0 until m.size - 3) {
-                    if (m[i].first == k.a && m[i + 1].first == k.b && m[i + 2].first == k.c && m[i + 3].first == k.d) {
-                        current += m[i + 3].second
-                        break
-                    }
+                if (!monkeyMap.containsKey(k)) {
+                    map[k] = map.getOrDefault(k, 0) + monkey[i + 3].second
+                    monkeyMap[k] = true
                 }
             }
-            best = maxOf(best, current)
-//            println("Checking $k. Best so far: $best. Current: $current")
         }
+
+        return map.values.max()
+
+//        val sorted = map.toList().sortedByDescending { it.second }
+//
+//        var best = 0L
+//        for (key in sorted) {
+//            if (key.second < best) {
+//                break
+//            }
+//            val k = key.first
+//            var current = 0L
+//            for (m in monkeys) {
+//                for (i in 0 until m.size - 3) {
+//                    if (m[i].first == k.a && m[i + 1].first == k.b && m[i + 2].first == k.c && m[i + 3].first == k.d) {
+//                        current += m[i + 3].second
+//                        break
+//                    }
+//                }
+//            }
+//            best = maxOf(best, current)
+////            println("Checking $k. Best so far: $best. Current: $current")
+//        }
 
 //        var best = 0L
 //        for (a in -9L..9L) {
@@ -94,7 +101,7 @@ fun main() {
 //            }
 //        }
 
-        return best
+//        return best
     }
 
     val testInput = readInputString("year2024/day22/test")
